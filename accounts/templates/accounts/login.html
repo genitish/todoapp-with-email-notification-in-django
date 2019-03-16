@@ -1,0 +1,43 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TodoList App</title>
+  <meta http-equiv="refresh" content="45">
+  <!-- bootstrap cdn -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <!-- google fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <style>
+  body{
+      background-image: url("{% static 'img/chicago-wallpaper-3.jpg' %}");
+
+}
+</style>
+
+</head>
+
+<body>
+  <div class="hero">
+    <div class="container">
+
+ <div class="parallax-signup" data-parallax="scroll" data-z-index="1" data-image-src="/static/2.jpg">
+    <br><br><br>
+    <h1 class = "para-signup" align = "center">LOG IN</h1>
+    <form class="site-form-signup" action="{% url 'accounts:login'%}" method="post">
+      {%csrf_token%}
+      {{form}}
+      {% if request.GET.next %}
+        <input type="hidden"name="next"value="{{request.GET.next}}">
+      {% endif %}
+      <input type="submit"value="Login">
+    </form>
+  </div>
+  </div>
+</div>
+</body>
+</html>
